@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/boredMainFragment">
+
+    <fragment
+        android:id="@+id/boredActivityFragment"
+        android:name="ar.android.lflanzoni.boredapp.ui.BoredActivityFragment"
+        android:label="BoredActivityFragment" />
+    <fragment
+        android:id="@+id/boredCategoriesFragment"
+        android:name="ar.android.lflanzoni.boredapp.ui.BoredCategoriesFragment"
+        android:label="BoredCategoriesFragment" >
+        <action
+            android:id="@+id/action_boredCategoriesFragment_to_boredActivityFragment"
+            app:destination="@id/boredActivityFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/boredMainFragment"
+        android:name="ar.android.lflanzoni.boredapp.ui.BoredMainFragment"
+        android:label="BoredMainFragment" >
+        <action
+            android:id="@+id/action_boredMainFragment_to_boredActivityFragment"
+            app:destination="@id/boredActivityFragment" />
+        <action
+            android:id="@+id/action_boredMainFragment_to_boredCategoriesFragment"
+            app:destination="@id/boredCategoriesFragment" />
+    </fragment>
+</navigation>
