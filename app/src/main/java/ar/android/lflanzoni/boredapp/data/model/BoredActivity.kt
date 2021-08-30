@@ -1,6 +1,6 @@
 package ar.android.lflanzoni.boredapp.data.model
 
-data class Activity(
+data class BoredActivity(
     val activity: String,
     val accessibility: String,
     val type: String,
