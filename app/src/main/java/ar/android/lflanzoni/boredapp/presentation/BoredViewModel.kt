@@ -18,4 +18,14 @@ class BoredViewModel  @ViewModelInject constructor( private val repo: Repository
             emit(Resource.Failure(e))
         }
     }
+
+    fun translateText(text: String) = liveData(Dispatchers.IO){
+        emit(Resource.Loading())
+        try {
+            emit(Resource.Success(repo.translateText(text)))
+        }
+        catch (e: Exception){
+            emit(Resource.Failure(e))
+        }
+    }
 }

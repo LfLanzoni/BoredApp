@@ -12,6 +12,8 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Named
@@ -27,6 +29,19 @@ object AppModule {
     @Provides
     fun provideBaseTranslateUrl() = BuildConfig.BASE_TRANSLATE_URL
 
+
+    @Provides
+    @Singleton
+    fun provideOkHttpClient() = if (BuildConfig.DEBUG) {
+        val loggingInterceptor = HttpLoggingInterceptor()
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
+        OkHttpClient.Builder()
+            .addInterceptor(loggingInterceptor)
+            .build()
+    } else OkHttpClient
+        .Builder()
+        .build()
+
     @Provides
     @Singleton
     @Named("Normal")
@@ -34,6 +49,7 @@ object AppModule {
         Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
             .baseUrl(BuildConfig.BASE_BORED_URL)
+            .client(provideOkHttpClient())
             .build()
 
     @Provides
@@ -43,15 +59,16 @@ object AppModule {
         Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
             .baseUrl(BuildConfig.BASE_TRANSLATE_URL)
+            .client(provideOkHttpClient())
             .build()
 
     @Provides
     @Singleton
-    fun provideBoredService(@Named("Normal")retrofit: Retrofit) = retrofit.create(BoredActivityService::class.java)
+    fun provideBoredService(@Named("Normal")retrofit: Retrofit): BoredActivityService = retrofit.create(BoredActivityService::class.java)
 
     @Provides
     @Singleton
-    fun provideTranslateService(@Named("Translate")retrofit: Retrofit) = retrofit.create(TranslateService::class.java)
+    fun provideTranslateService(@Named("Translate")retrofit: Retrofit): TranslateService = retrofit.create(TranslateService::class.java)
 
     @Provides
     @Singleton

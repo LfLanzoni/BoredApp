@@ -28,6 +28,18 @@ class BoredActivityFragment() : Fragment(R.layout.fragment_activity_bored) {
                 is Resource.Success -> {
                     result.data.body()?.let {
                         Log.d("TASK", it.activity)
+                        boredViewModel.translateText(it.activity).observe(viewLifecycleOwner,{ result ->
+                            when (result) {
+                                is Resource.Loading -> {
+                                    Log.d("TRANSLATE", "LOADING")
+                                }
+                                is Resource.Success ->{
+                                    Log.d("TRANSLATE", result.data.body()!!.translatedText)
+                                }
+                                is Resource.Failure ->{
+                                    Log.d("TRANSLATE", "ERROR")}
+                            }
+                        })
                         binding.txtTask.text = it.activity
                         binding.txtType.text = it.type
                         binding.txtAccessibility.text = it.accessibility
