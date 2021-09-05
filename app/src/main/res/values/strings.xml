@@ -1,8 +1,14 @@
 <resources>
-    <string name="app_name">BoredApp</string>
+    <string name="app_name">Bored…</string>
     <string name="select_type">Elige un tipo de Actividad</string>
     <string name="activity_random">Actividad Random</string>
     <string name="bored_app">Bored App</string>
     <string name="title_app">Sacate ese Aburrimiento!</string>
     <string name="resume_app"> Escoge una opcion y descubre algo para hacer…</string>
+    <string name="activity">Actividad</string>
+    <string name="type_task">Tipo:</string>
+    <string name="accesibility">Dificultad:</string>
+    <string name="participants">Participantes:</string>
+    <string name="price">Precio:</string>
+    <string name="link">Link:</string>
 </resources>

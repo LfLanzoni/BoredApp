@@ -5,6 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="150dp"
+        android:layout_height="200dp"
+        android:src="@drawable/ic_bored"
+        android:paddingBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/cardContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardContainer"
         android:layout_width="match_parent"
@@ -26,15 +37,18 @@
                 android:gravity="center"
                 android:textStyle="bold"
                 android:fontFamily="sans-serif-medium"
-                android:textSize="20sp"
+                android:textSize="30sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Actividad" />
+                android:text="@string/activity"
+                android:textColor="#00A8C6"/>
 
             <TextView
                 android:id="@+id/txtTask"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:textSize="20sp"
                 tools:text="Bailar el pasito tun tun" />
 
             <LinearLayout
@@ -45,13 +59,19 @@
                 android:id="@+id/txtTitleType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tipo:" />
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-medium"
+                android:textSize="20sp"
+                android:textColor="@color/primary"
+                android:text="@string/type_task" />
 
             <TextView
                 android:id="@+id/txtType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="10dp"
+                android:fontFamily="sans-serif-medium"
+                android:textSize="18sp"
                 tools:text="Recreational" />
             </LinearLayout>
 
@@ -65,53 +85,88 @@
                     android:id="@+id/txtTitleAccessibility"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Dificultad:" />
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-medium"
+                    android:textSize="20sp"
+                    android:textColor="@color/primary"
+                    android:text="@string/accesibility" />
 
                 <TextView
                     android:id="@+id/txtAccessibility"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="10dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:textSize="15sp"
                     tools:text="1" />
 
                 <TextView
                     android:id="@+id/txtTitleParticipants"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Participantes:" />
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-medium"
+                    android:textSize="20sp"
+                    android:textColor="@color/primary"
+                    android:text="@string/participants" />
 
                 <TextView
                     android:id="@+id/txtParticipants"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="10dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:textSize="15sp"
                     tools:text="1" />
-
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
                 <TextView
                     android:id="@+id/txtTitlePrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Precio:" />
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-medium"
+                    android:textSize="20sp"
+                    android:textColor="@color/primary"
+                    android:text="@string/price" />
 
                 <TextView
                     android:id="@+id/txtPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="10dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:textSize="15sp"
                     tools:text="0.0" />
             </LinearLayout>
-            <TextView
-                android:id="@+id/txtTitleLink"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Link:" />
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/txtTitleLink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/primary"
+                    android:textSize="20sp"
+                    android:text="@string/link" />
 
-            <TextView
-                android:id="@+id/txtLink"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:autoLink="web"
-                tools:text="www.tareas.com" />
+                <TextView
+                    android:id="@+id/txtLink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:textSize="15sp"
+                    android:autoLink="web"
+                    android:paddingHorizontal="10dp"
+                    android:paddingBottom="10dp"
+                    tools:text="www.tareas.com" />
+            </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
     <ProgressBar

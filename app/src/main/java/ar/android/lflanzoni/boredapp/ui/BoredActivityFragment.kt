@@ -11,11 +11,14 @@ import ar.android.lflanzoni.boredapp.data.model.BoredTask
 import ar.android.lflanzoni.boredapp.databinding.FragmentActivityBoredBinding
 import ar.android.lflanzoni.boredapp.presentation.BoredViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
 
 @AndroidEntryPoint
 class BoredActivityFragment : Fragment(R.layout.fragment_activity_bored) {
     private val boredViewModel: BoredViewModel by activityViewModels()
     private lateinit var binding: FragmentActivityBoredBinding
+    var flagType: Boolean = false
+    var flagTask: Boolean = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -27,6 +30,7 @@ class BoredActivityFragment : Fragment(R.layout.fragment_activity_bored) {
                     Log.d("TASK", "LOADING")
                     binding.progressBar.visibility = View.VISIBLE
                     binding.cardContainer.visibility = View.GONE
+                    binding.icon.visibility = View.GONE
                 }
                 is Resource.Success -> {
                     result.data.body()?.let {
@@ -80,9 +84,13 @@ class BoredActivityFragment : Fragment(R.layout.fragment_activity_bored) {
                 }
                 is Resource.Success ->{
                     Log.d("TRANSLATE TYPE", result.data.body()!!.translatedText)
-                    binding.txtType.text = result.data.body()!!.translatedText
-                    binding.progressBar.visibility = View.GONE
-                    binding.cardContainer.visibility = View.VISIBLE
+                    flagType = true
+                    binding.txtType.text = result.data.body()!!.translatedText.capitalize(Locale.ROOT)
+                    if (flagTask){
+                        binding.progressBar.visibility = View.GONE
+                        binding.cardContainer.visibility = View.VISIBLE
+                        binding.icon.visibility = View.VISIBLE
+                    }
                 }
                 is Resource.Failure ->{
                     Log.d("TRANSLATE TYPE", "ERROR")
@@ -103,9 +111,13 @@ class BoredActivityFragment : Fragment(R.layout.fragment_activity_bored) {
                 }
                 is Resource.Success ->{
                     Log.d("TRANSLATE TASK", result.data.body()!!.translatedText)
-                    binding.txtTask.text = result.data.body()!!.translatedText
-                    binding.progressBar.visibility = View.GONE
-                    binding.cardContainer.visibility = View.VISIBLE
+                    flagTask = true
+                    binding.txtTask.text = result.data.body()!!.translatedText.capitalize(Locale.ROOT)
+                    if(flagType){
+                        binding.progressBar.visibility = View.GONE
+                        binding.cardContainer.visibility = View.VISIBLE
+                        binding.icon.visibility = View.VISIBLE
+                    }
                 }
                 is Resource.Failure ->{
                     Log.d("TRANSLATE TASK", "ERROR")
