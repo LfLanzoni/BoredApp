@@ -12,7 +12,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginHorizontal="10dp"
+        app:cardCornerRadius="8dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -21,6 +23,10 @@
 
             <TextView
                 android:id="@+id/txtTitleTask"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-medium"
+                android:textSize="20sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Actividad" />
@@ -31,18 +37,23 @@
                 android:layout_height="wrap_content"
                 tools:text="Bailar el pasito tun tun" />
 
-            <TextView
-                android:id="@+id/txtTitleType"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Tipo" />
+                android:orientation="horizontal">
+            <TextView
+                android:id="@+id/txtTitleType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tipo:" />
 
             <TextView
                 android:id="@+id/txtType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingHorizontal="10dp"
                 tools:text="Recreational" />
-
+            </LinearLayout>
 
 
             <LinearLayout
@@ -54,7 +65,7 @@
                     android:id="@+id/txtTitleAccessibility"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Accesibilidad" />
+                    android:text="Dificultad:" />
 
                 <TextView
                     android:id="@+id/txtAccessibility"
@@ -67,7 +78,7 @@
                     android:id="@+id/txtTitleParticipants"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Participantes" />
+                    android:text="Participantes:" />
 
                 <TextView
                     android:id="@+id/txtParticipants"
@@ -80,7 +91,7 @@
                     android:id="@+id/txtTitlePrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Precio" />
+                    android:text="Precio:" />
 
                 <TextView
                     android:id="@+id/txtPrice"
@@ -93,13 +104,23 @@
                 android:id="@+id/txtTitleLink"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Link" />
+                android:text="Link:" />
 
             <TextView
                 android:id="@+id/txtLink"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:autoLink="web"
                 tools:text="www.tareas.com" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
