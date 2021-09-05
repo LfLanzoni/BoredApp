@@ -1,26 +1,10 @@
 package ar.android.lflanzoni.boredapp.core
 
-data class Resource<out T>(val status: Status, val data: T?, val message: String?) {
+sealed class Resource<out T> {
 
-    companion object {
+    class Loading<out T>:Resource<T>()
 
-        fun <T> success(data: T?): Resource<T> {
-            return Resource(Status.SUCCESS, data, null)
-        }
+    data class Success<out T>(val data: T): Resource<T>()
 
-        fun <T> error(msg: String, data: T?): Resource<T> {
-            return Resource(Status.ERROR, data, msg)
-        }
-
-        fun <T> loading(data: T?): Resource<T> {
-            return Resource(Status.LOADING, data, null)
-        }
-
-    }
-
-}
-enum class Status {
-    SUCCESS,
-    ERROR,
-    LOADING
+    data class Failure(val exception : Exception): Resource<Nothing>()
 }
